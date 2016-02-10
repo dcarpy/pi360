@@ -17,15 +17,15 @@ CURRENT_AUTHOR="idkpmiller@sip2serve.com"
 
 # Network Interface
 IP4_CONF_TYPE=DHCP
-IP4_ADDRESS=192.168.1.150
-IP4_NETMASK=255.255.255.0
-IP4_GATEWAY=192.168.1.1
+IP4_ADDRESS=192.168.0.93
+IP4_NETMASK=255.255.254.0
+IP4_GATEWAY=192.168.0.1
 IP4_DNS1=8.8.8.8.8
 IP4_DNS2=4.4.4.4
 
 # Wifi Access Point
-AP_COUNTRY=NZ
-AP_CHAN=1
+AP_COUNTRY=US
+AP_CHAN=6
 AP_SSID=RPiAP
 AP_PASSPHRASE=PASSWORD
 
@@ -123,12 +123,12 @@ if [ -n "$t1" ]; then AP_PASSPHRASE="$t1";fi
   echo ""
   echo "#####################PLEASE WAIT##################"######
   echo -en "Package list update                                 "
-  apt-get -qq update 
-  echo -en "[OK]\n"
+  #apt-get -qq update 
+  #echo -en "[OK]\n"
 
   echo -en "Adding packages                                     "
-  apt-get -y -qq install hostapd bridge-utils iw > /dev/null 2>&1
-  echo -en "[OK]\n"
+  #apt-get -y -qq install hostapd bridge-utils iw > /dev/null 2>&1
+  #echo -en "[OK]\n"
 
 #check  that iw list fails with 'nl80211 not found'
   echo -en "iw list check                                       "
