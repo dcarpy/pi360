@@ -12,8 +12,10 @@ import sys
 import IN
 
 
-MCAST_GRP = '225.1.1.1'
-MCAST_PORT = 3179
+#MCAST_GRP = '225.1.1.1'
+MCAST_GRP = '225.0.0.255'
+#MCAST_PORT = 3179
+MCAST_PORT = 8123
 
 if len(sys.argv) < 2:
   print "Please provide raspistill command options. See raspistill command for details"

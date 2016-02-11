@@ -10,8 +10,10 @@ import fcntl
 import subprocess
 import sys
 
-MCAST_GRP = '225.1.1.1'
-MCAST_PORT = 3179
+#MCAST_GRP = '225.1.1.1'
+MCAST_GRP = '225.0.0.255'
+#MCAST_PORT = 3179
+MCAST_PORT = 8123
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
