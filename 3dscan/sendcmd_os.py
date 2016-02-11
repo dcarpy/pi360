@@ -28,7 +28,8 @@ else:
   SEND = SCMD + options
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
   dev = "eth0" + "\0"
-  sock.setsockopt(socket.SOL_SOCKET, IN.SO_BINDTODEVICE, dev)
+  #sock.setsockopt(socket.SOL_SOCKET, IN.SO_BINDTODEVICE, dev)
+  sock.setsockopt(socket.SOL_SOCKET, 25, dev)
   sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
   sock.sendto(SEND, (MCAST_GRP, MCAST_PORT))
   sock.close()
