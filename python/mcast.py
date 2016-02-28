@@ -1,4 +1,4 @@
-#! /usr/bin/python2.7
+#!/usr/bin/python
 #
 # Send/receive UDP multicast packets.
 # Requires that your OS kernel supports IP multicast.
