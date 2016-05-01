@@ -8,8 +8,8 @@ slop = 0.2;  // size by which ID of holes shrinks during print
 fn = 50;     // facets on a cylinder
 eps = 0.03;  // a small number
 
-CBW = 36.1; // width of camera PCB (x)
-CBL = 36.1; // length of camera PCB (y)
+CBW = 36.5; // width of camera PCB (x)
+CBL = 36.5; // length of camera PCB (y)
 CBH = 1.63; // thickness of camera PCB
 CBBH = 2.9-CBH; // camera PCB bottom component keep-out height
 CBBS = 2.0; // PCB bottom keeput setback from edge
@@ -23,7 +23,6 @@ CBFCE = 0.97; // 15-way FC edge setback
 MHOD = 3.0; // M3 mounting screw hole OD
 MHCC = 29.0; // M3 mounting hole center-center distance
 
-FCH = 0.4; // 15-way FC thickness (at stiffener)
 FCW = 16.15; // 15-way FC width
 
 // ===================================================
@@ -40,6 +39,7 @@ CCBIL = CBL+slop*2; // housing back interior length
 CCBSW = FCW+1; // width for flex cable slot
 BS=8; // mounting screw boss width
 BSO=0.8; // boss offset towards center
+SHID = 3.0;  // ID of screw hole (note ID will be "slop" smaller)
 
 font = "Liberation Sans";
 num_size = 8;
@@ -61,8 +61,6 @@ module CHB_outside() {
   }
 }
 
-SHID = 3.0;  // ID of screw hole (note ID will be "slop" smaller)
-
 // mounting screw bosses in 4 corners of camera back
 module CHB_Boss() {
   union() {
@@ -77,32 +75,18 @@ module CHB_Boss() {
   }
 }
 
-module CHB_Holes(diam=SHID,len=50) { // M3 mounting holes
-  union() {
-    translate([MHCC/2,MHCC/2,-BS])
- 	    cylinder(r=diam/2,h=len,$fn=20);  // hole for M3 mounting screw
-    translate([-MHCC/2,MHCC/2,-BS])
- 	    cylinder(r=diam/2,h=len,$fn=20);  // hole for M3 mounting screw
-    translate([MHCC/2,-MHCC/2,-BS])
- 	    cylinder(r=diam/2,h=len,$fn=20);  // hole for M3 mounting screw
-    translate([-MHCC/2,-MHCC/2,-BS])
- 	    cylinder(r=diam/2,h=len,$fn=20);  // hole for M3 mounting screw
-  }
-}
-
 module CameraHousingBack() {
   difference() {
     union() {
       CHB_outside();
       CHB_Boss();
     }
-    CHB_Holes();
   }
 }
 
 module letter(l,font_size=30) {
-  // Use linear_extrude() to make the letters 3D objects as they
-  // are only 2D shapes when only using text()
+  // Use linear_extrude() to make the letters 3D objects as
+  // they are only 2D shapes when only using text()
   linear_extrude(height = letter_height) {
     text(l, size = font_size, font = font, halign = "center", valign = "center", $fn = 36);
   }
@@ -116,21 +100,18 @@ difference() {
         cube([PIW,PIL,CCBD-2]);
       }
   }
-  translate([0,0,-3])
-    letter("\u263A", letter_size);
-  CHB_Holes();
   union() {
     translate([PIW/2-3.5,PIL/2-3.5,-BS])
- 	    cylinder(r=SHID/2,h=50,$fn=20);
+ 	    cylinder(d=SHID+slop,h=50,$fn=50);
     translate([-PIW/2+3.5,PIL/2-3.5,-BS])
- 	    cylinder(r=SHID/2,h=50,$fn=20);
+ 	    cylinder(d=SHID+slop,h=50,$fn=50);
     translate([PIW/2-3.5,-PIL/2+3.5,-BS])
- 	    cylinder(r=SHID/2,h=50,$fn=20);
+ 	    cylinder(d=SHID+slop,h=50,$fn=50);
     translate([-PIW/2+3.5,-PIL/2+3.5,-BS])
- 	    cylinder(r=SHID/2,h=50,$fn=20);
+ 	    cylinder(d=SHID+slop,h=50,$fn=50);
   }
-  translate([0,26,-3])
-    letter("1",num_size);
+  //translate([0,26,-3])
+    //letter("1",num_size);
   translate([-CCBSW/2,-(CCL/2)-eps-6,-4]) 
     cube([CCBSW,2,CCBD*2]); // slot for flex cable
 }

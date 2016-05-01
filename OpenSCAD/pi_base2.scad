@@ -27,50 +27,50 @@ union() {
       translate([0,0,2])
          linear_extrude( height = baseHeight+4 )
             polySide();
-      translate([-43.6033,24.5,5])
+      translate([-43.6033,24.75,5])
          rotate([0,90,0]) {
             cylinder (h=5, d=3.2, center=true, $fn=100);
          }
-      translate([-43.6033,-24.5,5])
+      translate([-43.6033,-24.75,5])
          rotate([0,90,0]) {
             cylinder (h=5, d=3.2, center=true, $fn=100);
          }
       rotate([0,0,72]) {
-         translate([-43.6033,24.5,5])
+         translate([-43.6033,24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
-         translate([-43.6033,-24.5,5])
+         translate([-43.6033,-24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
       } 
       rotate([0,0,144]) {
-         translate([-43.6033,24.5,5])
+         translate([-43.6033,24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
-         translate([-43.6033,-24.5,5])
+         translate([-43.6033,-24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
       } 
       rotate([0,0, 216]) {
-         translate([-43.6033,24.5,5])
+         translate([-43.6033,24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
-         translate([-43.6033,-24.5,5])
+         translate([-43.6033,-24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
       } 
       rotate([0,0,288]) {
-         translate([-43.6033,24.5,5])
+         translate([-43.6033,24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
-         translate([-43.6033,-24.5,5])
+         translate([-43.6033,-24.75,5])
             rotate([0,90,0]) {
                cylinder (h=5, d=3.2, center=true, $fn=100);
             }
